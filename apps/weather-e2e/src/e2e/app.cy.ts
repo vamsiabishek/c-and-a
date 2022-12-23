@@ -1,13 +1,30 @@
-import { getGreeting } from '../support/app.po';
+import { getHeader, searchInput, searchBtn, getCityName, getCityTemperature, getErrorMsg } from '../support/app.po';
 
 describe('weather', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome weather');
+  it('should display Weather header and search input', () => {
+    getHeader().should('contain', 'Weather');
+    searchInput().should('be.visible');
+    searchBtn().should('be.visible');
   });
+
+  it('should display city not available error message when invalid city name is entered ', () => {
+    searchInput().type('abc');
+    searchBtn().click();
+    getErrorMsg().should('have.text', 'city not found');
+  });
+
+  it('should display please enter city error message on empty search', () => {
+    searchBtn().click();
+    getErrorMsg().should('have.text', 'Please enter the city');
+  });
+
+  it('should display city weather details on searching for a city', () => {
+    searchInput().type('dusseldorf');
+    searchBtn().click();
+    getCityName().should('be.visible');
+    getCityTemperature().should('be.visible');
+  });
+
 });

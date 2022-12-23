@@ -11,14 +11,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "preserveSymlinks": true
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.js",
     "src/**/*.jsx",
-    "next-env.d.ts"
+    "next-env.d.ts",
+    "**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"
+
   ],
   "exclude": ["node_modules", "jest.config.ts"]
 }

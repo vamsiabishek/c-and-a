@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@c-and-a/common-ui": ["libs/common-ui/src/index.ts"],
+      "@c-and-a/shared-types": ["libs/shared-types/src/index.ts"],
+      "test-utils": ["apps/weather/test-utils/testUtils.tsx"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
